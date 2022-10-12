@@ -18,9 +18,10 @@ master-to-slave replication but xtrabackup handles slave-to-master backward repl
 6. APP - We will create a HA application with HA available MYSQL cluster 
 > kubectl create -f app.yaml
 
-> $ kubectl scale --replicas=3 deployment/wordpress. 
-We’ll again see that data is preserved across all three instances. To test the MySQL StatefulSet, we can scale down the number of replicas using the following: 
-> $ kubectl scale statefulsets mysql --replicas=1 
+Resilience Testing
+> $ kubectl scale --replicas=3 deployment/wordpress.
+We’ll again see that data is preserved across all three instances. To test the MySQL StatefulSet, we can scale down the number of replicas using the following
+> $ kubectl scale statefulsets mysql --replicas=1
 We’ll see a loss of both slaves in this instance and, in the event of a loss of the master in this moment, the data it has will be preserved on the GCE
 Persistent Disk. However, we’ll have to manually recover the data from the disk. If a master node goes down, a new master will be spun up and via xtrabackup, it will repopulate with the data from a slave. Therefore, I don’t recommend ever running with a replication factor of less than three when running production databases.
 
