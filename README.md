@@ -20,6 +20,7 @@ master-to-slave replication but xtrabackup handles slave-to-master backward repl
 
 Resilience Testing
 > $ kubectl scale --replicas=3 deployment/wordpress.
+
 We’ll again see that data is preserved across all three instances. To test the MySQL StatefulSet, we can scale down the number of replicas using the following
 > $ kubectl scale statefulsets mysql --replicas=1
 
