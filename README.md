@@ -1,4 +1,4 @@
-Initially create a namepsace called "'siteassignment'" and create the blow workloads,
+Initially create a namepsace called "siteassignment" and create the blow workloads,
 
 1. Storage class - We are creating a storage class to allocate persistant volumes
 > kubectl create -f storage-class.yaml
