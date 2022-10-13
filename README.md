@@ -42,3 +42,6 @@ HA - Enable HPA based on CPU > 30% for the site pod set.
 by using ingress endpoint we can able to reach the metrics or else we can download the kubeconfig of our stack in local and just port forward to our laptop 
 > kubectl port-forward --namespace=siteassignment service/ingress 9100:9100 & \
   kubectl port-forward --namespace=siteassignment service/ingress 9104:9104
+  
+9. Pod restart - you can deploy the kube-state-metrics container that publishes the restart metric for pods: https://github.com/kubernetes/kube-state-metrics 
+more on this - https://github.com/kubernetes/kube-state-metrics/blob/master/docs/pod-metrics.md
