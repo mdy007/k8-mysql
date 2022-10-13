@@ -29,3 +29,16 @@ Persistent Disk. However, we’ll have to manually recover the data from the dis
 
 HA - Enable HPA based on CPU > 30% for the site pod set.
 > kubectl autoscale deployment wordpress --cpu-percent=30 --min=1 --max=10
+
+7. node-exporter - Deploy node exporter on all the Kubernetes nodes as a daemonset. Daemonset makes sure one instance of node-exporter is running in all the nodes. It exposes all the node metrics on port 9100 on the /metrics endpoint
+> kubectl create -f daemonset.yaml
+> kubectl create -f service.yaml
+
+8. mysql-exporter - installing mysql exporter using helm charts with custom conf as values.yaml
+> helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  helm repo update
+  helm install --name <release name> -f values.yaml
+  
+by using ingress endpoint we can able to reach the metrics or else we can download the kubeconfig of our stack in local and just port forward to our laptop 
+> kubectl port-forward --namespace=siteassignment service/ingress 9100:9100 & \
+  kubectl port-forward --namespace=siteassignment service/ingress 9104:9104
