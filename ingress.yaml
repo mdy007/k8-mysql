@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-ui
+  namespace: siteassignment
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  # Use the host you used in your kubernetes Ingress Configurations
+  #- host: prometheus.example.com
+  - http:
+      paths:
+      - path: /metrics
+        pathType: Prefix
+        backend:
+          service:
+            name: node-exporter
+            port:
+              number: 9100
+      - path: /metrics
+        pathType: Prefix
+        backend:
+          service:
+            name: mysql-exporter
+            port:
+              number: 9104
