@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: wordpress
+  namespace: siteassignment
   labels:
     app: wordpress
 spec:
@@ -18,6 +19,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: nfs
+  namespace: siteassignment
 spec:
   capacity:
     storage: 20G
@@ -34,6 +36,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nfs
+  namespace: siteassignment
 spec:
   accessModes:
     - ReadWriteMany
@@ -48,6 +51,7 @@ apiVersion: apps/v1beta1 # for versions before 1.8.0 use apps/v1beta1
 kind: Deployment
 metadata:
   name: wordpress
+  namespace: siteassignment
   labels:
     app: wordpress
 spec:
