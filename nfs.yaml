@@ -4,6 +4,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nfs
+  namespace: siteassignment
   labels:
     demo: nfs
   annotations:
@@ -20,6 +21,7 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   name: nfs-server
+  namespace: siteassignment
 spec:
   replicas: 1
   selector:
@@ -55,6 +57,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: nfs-server
+  namespace: siteassignment
 spec:
   ports:
     - name: nfs
