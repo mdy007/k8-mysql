@@ -3,6 +3,7 @@ kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
   name: <name>
+  namespace: siteassignment
 provisioner: <volume of aws/gcp/azure or another provider>
 parameters:
   type: <type>
