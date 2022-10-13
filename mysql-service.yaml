@@ -4,6 +4,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
+  namespace: siteassignment
   labels:
     app: mysql
 spec:
